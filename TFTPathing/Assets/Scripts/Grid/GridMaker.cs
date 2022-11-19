@@ -5,7 +5,8 @@ using UnityEngine;
 public class GridMaker : MonoBehaviour
 {
     public GameObject LevelPlaceholder;
-    public List<GameObject> HexagonObjects;
+    public List<GameObject> HexagonVoxels;
+    public GameObject[,] HexagonGrid;
 
     public GameObject HexagonPrefab;
     public int Dimension;
@@ -20,7 +21,8 @@ public class GridMaker : MonoBehaviour
         dimens = Dimension;
         h_offset = Prefab_Horizontal_Offset;
         v_offset = Prefab_Vertical_Offset;
-        HexagonObjects = new List<GameObject>();
+        HexagonVoxels = new List<GameObject>();
+        HexagonGrid=new GameObject[Dimension,Dimension];
         CreateGrid();
     }
 
@@ -30,25 +32,25 @@ public class GridMaker : MonoBehaviour
         if (dimens!= Dimension)
         {
             dimens = Dimension;
-            foreach (var hex in HexagonObjects)
+            foreach (var hex in HexagonVoxels)
                 Destroy(hex);
-            HexagonObjects.Clear();
+            HexagonVoxels.Clear();
             CreateGrid();
         }
         else if (h_offset != Prefab_Horizontal_Offset)
         {
             h_offset = Prefab_Horizontal_Offset;
-            foreach (var hex in HexagonObjects)
+            foreach (var hex in HexagonVoxels)
                 Destroy(hex);
-            HexagonObjects.Clear();
+            HexagonVoxels.Clear();
             CreateGrid();
         }
         else if (v_offset != Prefab_Vertical_Offset)
         {
             v_offset = Prefab_Vertical_Offset;
-            foreach (var hex in HexagonObjects)
+            foreach (var hex in HexagonVoxels)
                 Destroy(hex);
-            HexagonObjects.Clear();
+            HexagonVoxels.Clear();
             CreateGrid();
         }
     }
@@ -70,7 +72,8 @@ public class GridMaker : MonoBehaviour
                 GameObject new_voxel = Instantiate(HexagonPrefab, current_position, HexagonPrefab.transform.rotation, LevelPlaceholder.transform);
                 new_voxel.GetComponent<Hexagon_Voxel>().Column = col;
                 new_voxel.GetComponent<Hexagon_Voxel>().Row = row;
-                HexagonObjects.Add(new_voxel);
+                HexagonVoxels.Add(new_voxel);
+                HexagonGrid[row,col] = new_voxel;
                 //change next voxel position
                 current_position = new Vector3(current_position.x + Prefab_Horizontal_Offset, current_position.y, current_position.z);
 
