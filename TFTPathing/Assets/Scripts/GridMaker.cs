@@ -68,6 +68,8 @@ public class GridMaker : MonoBehaviour
             {
                 //create new voxel
                 GameObject new_voxel = Instantiate(HexagonPrefab, current_position, HexagonPrefab.transform.rotation, LevelPlaceholder.transform);
+                new_voxel.GetComponent<Hexagon_Voxel>().Column = col;
+                new_voxel.GetComponent<Hexagon_Voxel>().Row = row;
                 HexagonObjects.Add(new_voxel);
                 //change next voxel position
                 current_position = new Vector3(current_position.x + Prefab_Horizontal_Offset, current_position.y, current_position.z);
