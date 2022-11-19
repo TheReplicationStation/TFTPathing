@@ -9,6 +9,7 @@ public class GridMaker : MonoBehaviour
 
     public GameObject HexagonPrefab;
     public int Dimension;
+    private int dimens;
     private float h_offset;
     private float v_offset;
     public float Prefab_Horizontal_Offset;
@@ -16,6 +17,7 @@ public class GridMaker : MonoBehaviour
 
     private void Awake()
     {
+        dimens = Dimension;
         h_offset = Prefab_Horizontal_Offset;
         v_offset = Prefab_Vertical_Offset;
         HexagonObjects = new List<GameObject>();
@@ -25,7 +27,15 @@ public class GridMaker : MonoBehaviour
 
     private void Update()
     {
-        if (h_offset != Prefab_Horizontal_Offset)
+        if (dimens!= Dimension)
+        {
+            dimens = Dimension;
+            foreach (var hex in HexagonObjects)
+                Destroy(hex);
+            HexagonObjects.Clear();
+            CreateGrid();
+        }
+        else if (h_offset != Prefab_Horizontal_Offset)
         {
             h_offset = Prefab_Horizontal_Offset;
             foreach (var hex in HexagonObjects)
@@ -65,8 +75,11 @@ public class GridMaker : MonoBehaviour
                 //voxel count
                 counter++;
             }
-            //change current poisition to place new voxel
-            current_position = current_position + new Vector3(Mathf.Pow(-1,row)* Prefab_Horizontal_Offset/2, 0, -(Prefab_Vertical_Offset/3));
+            if(row%2==0)
+                //change current poisition to place new voxel
+                current_position = start_position + new Vector3(Prefab_Horizontal_Offset/2, 0, -(Prefab_Vertical_Offset/3)*(row+1));
+            else
+                current_position = start_position + new Vector3(0, 0, -(Prefab_Vertical_Offset / 3) * (row + 1));
         }
     }
 }
