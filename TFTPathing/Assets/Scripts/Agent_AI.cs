@@ -10,6 +10,7 @@ public class Agent_AI : MonoBehaviour
     public int TargetRow;
     public int TargetColumn;
     public float PlayerHeight;
+    public float PlayerSpeed;
 
     public void InitializeAgent(GridManager gridmanager,int row,int col)
     {
