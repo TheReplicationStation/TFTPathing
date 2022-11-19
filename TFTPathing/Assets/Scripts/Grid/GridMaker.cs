@@ -16,16 +16,15 @@ public class GridMaker : MonoBehaviour
     public float Prefab_Horizontal_Offset;
     public float Prefab_Vertical_Offset;
 
-    private void Awake()
+    public void Initialize_GridMaker()
     {
         dimens = Dimension;
         h_offset = Prefab_Horizontal_Offset;
         v_offset = Prefab_Vertical_Offset;
         HexagonVoxels = new List<GameObject>();
-        HexagonGrid=new GameObject[Dimension,Dimension];
+        HexagonGrid = new GameObject[Dimension, Dimension];
         CreateGrid();
     }
-
 
     private void Update()
     {

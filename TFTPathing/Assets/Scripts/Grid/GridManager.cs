@@ -6,10 +6,15 @@ public class GridManager : MonoBehaviour
 {
     public int Column;
     public int Row;
-    private GameObject[,]HexagonGrid;
-    private void Start()
+    public List<GameObject> HexagonVoxels;
+    public GameObject[,] HexagonGrid;
+    public int Dimension;
+
+    public void Initialize_GridManager()
     {
         HexagonGrid = this.GetComponent<GridMaker>().HexagonGrid;
+        HexagonVoxels = this.GetComponent<GridMaker>().HexagonVoxels;
+        Dimension = this.GetComponent<GridMaker>().Dimension;
     }
 
     void Update()
