@@ -6,4 +6,5 @@ public class Hexagon_Voxel : MonoBehaviour
 {
     public int Column;
     public int Row;
+    public bool Occupied;
 }
