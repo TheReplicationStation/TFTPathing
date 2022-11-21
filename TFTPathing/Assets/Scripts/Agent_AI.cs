@@ -5,12 +5,15 @@ using UnityEngine;
 public class Agent_AI : MonoBehaviour
 {
     private GridManager _GridManager;
-    public int Row;
-    public int Column;
+
+    private int Row;
+    private int Column;
+
     public int TargetRow;
     public int TargetColumn;
     public float Height;
 
+    [Header("Agent Parameters")]
     public int Team;
     public int Range;
     public float MovementSpeed;
@@ -35,6 +38,10 @@ public class Agent_AI : MonoBehaviour
         _GridManager = GameManager.Instance._GridManager;
         Row = target_voxel.GetComponent<Hexagon_Voxel>().Row;
         Column = target_voxel.GetComponent<Hexagon_Voxel>().Column;
+
+        TargetRow = target_voxel.GetComponent<Hexagon_Voxel>().Row;
+        TargetColumn = target_voxel.GetComponent<Hexagon_Voxel>().Column;
+
         this.transform.position = target_voxel.transform.position + new Vector3(0, Height, 0);
         target_voxel.GetComponent<Hexagon_Voxel>().Occupied = true;
         
