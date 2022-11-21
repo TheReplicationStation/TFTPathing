@@ -109,7 +109,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3fb4a433cc50f74ba15f5e885777a2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _GridManager: {fileID: 0}
   Row: 0
   Column: 0
-  PlayerHeight: 0.5
+  TargetRow: 0
+  TargetColumn: 0
+  Height: 0.5
+  Team: 0
+  Range: 0
+  MovementSpeed: 0

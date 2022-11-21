@@ -9,18 +9,40 @@ public class Agent_AI : MonoBehaviour
     public int Column;
     public int TargetRow;
     public int TargetColumn;
-    public float PlayerHeight;
-    public float PlayerSpeed;
+    public float Height;
 
-    public void InitializeAgent(GridManager gridmanager,int row,int col)
+    public int Team;
+    public int Range;
+    public float MovementSpeed;
+
+    public void InitializeAgent_GridCoordinates(int row,int col,int team,int range,int speed)
     {
-        _GridManager = gridmanager;
+        _GridManager = GameManager.Instance._GridManager;
         Row = row;
         Column = col;
         GameObject target_voxel = _GridManager.GetVoxel_GridCoordinates(Row, Column);
-        this.transform.position = target_voxel.transform.position + new Vector3(0, PlayerHeight, 0);
+        this.transform.position = target_voxel.transform.position + new Vector3(0, Height, 0);
         target_voxel.GetComponent<Hexagon_Voxel>().Occupied = true;
+
+        Team = team;
+        Range = range;
+        MovementSpeed = speed;
     }
+
+
+    public void InitializeAgent_GameObject(GameObject target_voxel, int team, int range, int speed)
+    {
+        _GridManager = GameManager.Instance._GridManager;
+        Row = target_voxel.GetComponent<Hexagon_Voxel>().Row;
+        Column = target_voxel.GetComponent<Hexagon_Voxel>().Column;
+        this.transform.position = target_voxel.transform.position + new Vector3(0, Height, 0);
+        target_voxel.GetComponent<Hexagon_Voxel>().Occupied = true;
+        
+        Team = team;
+        Range = range;
+        MovementSpeed = speed;
+    }
+
 
     void Update()
     {
@@ -38,7 +60,7 @@ public class Agent_AI : MonoBehaviour
         GameObject current_voxel = _GridManager.GetVoxel_GridCoordinates(Row, Column);
         current_voxel.GetComponent<Hexagon_Voxel>().Occupied = false;
 
-        this.transform.position = target_voxel.transform.position + new Vector3(0, PlayerHeight, 0);
+        this.transform.position = target_voxel.transform.position + new Vector3(0, Height, 0);
         target_voxel.GetComponent<Hexagon_Voxel>().Occupied = true;
     }
 }

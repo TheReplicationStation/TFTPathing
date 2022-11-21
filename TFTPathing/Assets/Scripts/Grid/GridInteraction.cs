@@ -28,5 +28,11 @@ public class GridInteraction : MonoBehaviour
             }
         }
 
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (previous_voxel != null)
+                GameManager.Instance._MenuManager.SpawnAgent(previous_voxel);
+        }
+
     }
 }
