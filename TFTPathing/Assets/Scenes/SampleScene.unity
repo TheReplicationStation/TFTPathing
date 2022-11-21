@@ -2523,6 +2523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _GridMaker: {fileID: 1960163411}
   _GridManager: {fileID: 1960163412}
+  _GridInteraction: {fileID: 1960163413}
   _AgentManager: {fileID: 1961231239}
 --- !u!1 &1881357571
 GameObject:
@@ -2756,6 +2757,7 @@ GameObject:
   - component: {fileID: 1960163410}
   - component: {fileID: 1960163412}
   - component: {fileID: 1960163411}
+  - component: {fileID: 1960163413}
   m_Layer: 0
   m_Name: GridManager
   m_TagString: Untagged
@@ -2811,6 +2813,18 @@ MonoBehaviour:
   Row: 0
   HexagonVoxels: []
   Dimension: 0
+--- !u!114 &1960163413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960163409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34212b96118d3f844be33baa5af852d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1961231237
 GameObject:
   m_ObjectHideFlags: 0

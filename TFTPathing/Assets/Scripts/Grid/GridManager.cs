@@ -32,8 +32,20 @@ public class GridManager : MonoBehaviour
     {
         Color blue_color;
         ColorUtility.TryParseHtmlString("#00FFDA67", out blue_color);
-        HexagonGrid[Row, Column].GetComponent<MeshRenderer>().material.color = blue_color;
+        HexagonGrid[row, col].GetComponent<MeshRenderer>().material.color = blue_color;
     }
+
+    public void ColorVoxel_GameObject(GameObject Voxel)
+    {
+        Color blue_color;
+        ColorUtility.TryParseHtmlString("#00FFDA67", out blue_color);
+        Voxel.GetComponent<MeshRenderer>().material.color = blue_color;
+    }
+    public void ReturnColorVoxel_GameObject(GameObject Voxel)
+    {
+        Voxel.GetComponent<MeshRenderer>().material.color = Color.white;
+    }
+
 
     public void ClearGridColors()
     {
