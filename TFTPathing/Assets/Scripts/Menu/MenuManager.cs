@@ -32,9 +32,11 @@ public class MenuManager : MonoBehaviour
                 speed = 1;
             else
                 speed = Int32.Parse(AgentMovementSpeed.text);
-            Debug.Log(TeamDropdown.value + " " +range +" "+speed);
-            if(!voxel.GetComponent<Hexagon_Voxel>().Occupied)
-                GameManager.Instance._AgentManager.CreateAgent_GameObject(voxel, TeamDropdown.value,range,speed);
+            if (!voxel.GetComponent<Hexagon_Voxel>().Occupied)
+            {
+                Debug.Log(TeamDropdown.value + " " + range + " " + speed);
+                GameManager.Instance._AgentManager.CreateAgent_GameObject(voxel, TeamDropdown.value, range, speed);
+            }
         }
     }
 

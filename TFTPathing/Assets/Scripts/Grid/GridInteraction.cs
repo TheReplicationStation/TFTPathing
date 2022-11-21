@@ -16,16 +16,22 @@ public class GridInteraction : MonoBehaviour
         //raycast from screen to mouse
         Ray camera_ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         int layerMask = 1 << 6;
-        if (Physics.Raycast(camera_ray, out RaycastHit hit, Mathf.Infinity,layerMask))
+        if (Physics.Raycast(camera_ray, out RaycastHit hit, Mathf.Infinity, layerMask))
         {
             if (previous_voxel != hit.collider.gameObject)
             {
-                if(previous_voxel!=null)
+                if (previous_voxel != null)
                     _GridManager.ReturnColorVoxel_GameObject(previous_voxel);
                 _GridManager.ColorVoxel_GameObject(hit.collider.gameObject);
                 //Debug.Log(hit.transform.gameObject.name);
                 previous_voxel = hit.collider.gameObject;
             }
+        }
+        else
+        {
+            if (previous_voxel != null)
+                _GridManager.ReturnColorVoxel_GameObject(previous_voxel);
+            previous_voxel = null;
         }
 
         if (Input.GetMouseButtonDown(0))
